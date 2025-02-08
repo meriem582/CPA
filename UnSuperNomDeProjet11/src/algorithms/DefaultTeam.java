@@ -37,7 +37,34 @@ public class DefaultTeam {
 		Point p = points.get(0);
 		Point q = points.get(1);
 
+		double d = 0;
+		for (Point p1 : points) {
+			for (Point p2 : points) {
+				double tmp1 = p1.getX() - p2.getX();
+				double tmp2 = p1.getY() - p2.getY();
+				double d2 = tmp1 * tmp1 + tmp2 * tmp2;
+				if (d2 > d) {
+					p = p1;
+					q = p2;
+					d = d2;
+				}
+			}
+		}
+
+		System.out.println("diametre norm : " + distance(p, q));
+
 		return new Line(p, q);
+	}
+	public double distance(Point a, Point b) {
+		double tmp1 = a.getX() - b.getX();
+		double tmp2 = a.getY() - b.getY();
+		return tmp1 * tmp1 + tmp2 * tmp2;
+	}
+
+	public Point centre(Point a, Point b) {
+		int x = (int) ((a.getX() + b.getX()) / 2);
+		int y = (int) ((a.getY() + b.getY()) / 2);
+		return new Point(x, y);
 	}
 
 	// calculCercleMin: ArrayList<Point> --> Circle
