@@ -41,7 +41,7 @@ public class Kruskal {
         return parent.get(p);
     }
 
-    public Tree2D edgesToTree(ArrayList<Edge> edges, Point root) {
+    public static Tree2D edgesToTree(ArrayList<Edge> edges, Point root) {
         ArrayList<Edge> remainder = new ArrayList<>();
         ArrayList<Point> subTreeRoots = new ArrayList<>();
         Edge current;
