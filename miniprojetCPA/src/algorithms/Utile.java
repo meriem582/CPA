@@ -8,6 +8,17 @@ import java.util.PriorityQueue;
 
 public class Utile {
 
+    /**
+     * cette fonction permet de génèrer un arbre de Steiner de base à partir des points à connecter.
+     * 
+     * On utilise l'approche suivante:
+     * - On utilise Kruskal pour garantir un arbre couvrant minimal, car il est efficace 
+     *   pour minimiser la distance totale.
+     * - L’algorithme de Floyd-Warshall est utilisé pour s’assurer que les connexions sont 
+     *   réalisables sous la contrainte de edgeThreshold.
+     * - L’approche basée sur les chemins courts permet d’éviter des liaisons inutiles 
+     *   et de mieux répartir les connexions.
+     */
     public static ArrayList<Edge> steinerBase(ArrayList<Point> points, int edgeThreshold, ArrayList<Point> hitPoints) {
         Kruskal kruskal = new Kruskal();
         ArrayList<Edge> edges = kruskal.kruskal(hitPoints);
@@ -45,11 +56,19 @@ public class Utile {
         return finalTree;
     }
 
+    /**
+     * cette fonction optimise l’arbre de Steiner en essayant différentes stratégies pour maximiser 
+     * le nombre de points connectés tout en restant sous la contrainte de budget.
+     * 
+     * On teste plusieurs points de départ pour voir lequel maximise le nombre de connexions
+     * On priorise les connexions les plus courtes en utilisant une file de priorité
+     * On compare différentes solutions et on garde la meilleure
+     * On privilégie les connexions stratégiques pour maximiser le nombre de points connectés
+     */
     public static ArrayList<Edge> optimizeSteiner(
             ArrayList<Point> points, ArrayList<Edge> edges,
             ArrayList<Point> hitPoints, int edgeThreshold, int budgetLimit) {
 
-        // Structures de stockage des meilleurs résultats
         ArrayList<Edge> bestEdges = new ArrayList<>();
         double bestDistance = Double.MAX_VALUE;
         int maxConnectedPoints = 0;
@@ -58,7 +77,6 @@ public class Utile {
             return bestEdges;
         }
 
-        // Parcourir plusieurs points de départ pour trouver la meilleure 
         for (Point startPoint : hitPoints) {
             HashSet<Point> connectedPoints = new HashSet<>();
             ArrayList<Edge> currentEdges = new ArrayList<>();
@@ -66,11 +84,10 @@ public class Utile {
 
             connectedPoints.add(startPoint);
 
-            // Trier les hitPoints selon la distance au point de départ testé
             ArrayList<Point> sortedHitPoints = new ArrayList<>(hitPoints);
             sortedHitPoints.sort(Comparator.comparingDouble(p -> p.distance(startPoint)));
 
-            // File de priorité pour sélectionner les meilleures connexions
+            //file de priorité pour sélectionner les connexions les plus courtes en premier
             PriorityQueue<Edge> edgeQueue = new PriorityQueue<>(Comparator.comparingDouble(Edge::distance));
             edgeQueue.addAll(edges);
 
@@ -79,7 +96,6 @@ public class Utile {
                 double minDistance = Double.MAX_VALUE;
                 Point newPoint = null;
 
-                // Sélectionner la connexion la plus efficace
                 for (Edge edge : edgeQueue) {
                     if ((connectedPoints.contains(edge.p) || connectedPoints.contains(edge.q))
                             && edge.distance() < minDistance) {
@@ -94,19 +110,18 @@ public class Utile {
                     }
                 }
 
-                // Vérifier si une connexion valide a été trouvée
                 if (bestEdge == null || newPoint == null) {
-                    break; // Arrêt si aucune nouvelle connexion possible
+                    break; // Stop si aucune nouvelle connexion possible
                 }
 
-                // Ajouter la connexion et le nouveau point
+                
                 currentEdges.add(bestEdge);
                 totalDistance += bestEdge.distance();
                 connectedPoints.add(newPoint);
                 edgeQueue.remove(bestEdge);
             }
 
-            // Comparer cette configuration aux meilleures trouvées
+      
             if (connectedPoints.size() > maxConnectedPoints
                     || (connectedPoints.size() == maxConnectedPoints && totalDistance < bestDistance)) {
                 bestEdges = new ArrayList<>(currentEdges);
