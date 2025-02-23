@@ -3,6 +3,7 @@ package algorithms;
 import java.awt.Point;
 
 public class Edge {
+
     public final Point p;
     public final Point q;
     public final double dist;

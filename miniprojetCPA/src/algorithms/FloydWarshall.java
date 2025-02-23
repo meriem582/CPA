@@ -1,6 +1,5 @@
 package algorithms;
 
-
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -13,7 +12,7 @@ public class FloydWarshall {
 
         initializeMatrices(points, edgeThreshold, n, next, dist);
         computeShortestPaths(n, next, dist);
-        
+
         return next;
     }
 
@@ -49,8 +48,10 @@ public class FloydWarshall {
 
     public static ArrayList<Integer> reconstructPath(int[][] next, int start, int end) {
         ArrayList<Integer> path = new ArrayList<>();
-        if (next[start][end] == -1) return path; // Aucun chemin
-        path.add(start);
+        if (next[start][end] == -1) {
+            return path; // Aucun chemin
+
+                }path.add(start);
         while (start != end) {
             start = next[start][end];
             path.add(start);
@@ -58,4 +59,3 @@ public class FloydWarshall {
         return path;
     }
 }
-

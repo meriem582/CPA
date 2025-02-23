@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.util.*;
 
 public class Kruskal {
-    
+
     public ArrayList<Edge> kruskal(ArrayList<Point> points) {
         List<Edge> edges = new ArrayList<>();
         for (Point p : points) {
@@ -17,11 +17,12 @@ public class Kruskal {
         edges.sort(Comparator.comparingDouble(e -> e.dist));  // trier les arêtes par ordre croissant de distance en u
 
         Map<Point, Point> parent = new HashMap<>();
-        for (Point p : points) parent.put(p, p);  // chaque point est son propre parent pour commencer
-
+        for (Point p : points) {
+            parent.put(p, p);  // chaque point est son propre parent pour commencer
+        }
         ArrayList<Edge> kruskal = new ArrayList<>();
         for (Edge edge : edges) {
-            Point rootP = find(parent, edge.p); 
+            Point rootP = find(parent, edge.p);
             Point rootQ = find(parent, edge.q);
             if (!rootP.equals(rootQ)) {
                 kruskal.add(edge);
@@ -64,4 +65,3 @@ public class Kruskal {
         return new Tree2D(root, subTrees);
     }
 }
-
