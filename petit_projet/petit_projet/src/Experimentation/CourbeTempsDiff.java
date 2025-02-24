@@ -56,7 +56,7 @@ public class CourbeTempsDiff extends JFrame {
 
                     // Ajouter les points au dataset
                     dataset.addValue(tempsNaif, "Algo Naïf", fichier);
-//                    dataset.addValue(tempsWelzl, "Algo Welzl", fichier);
+                    dataset.addValue(tempsWelzl, "Algo Welzl", fichier);
                 }
             }
         } catch (IOException e) {
@@ -76,5 +76,3 @@ public class CourbeTempsDiff extends JFrame {
         });
     }
 }
-
-

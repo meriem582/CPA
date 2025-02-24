@@ -77,5 +77,3 @@ public class CourbeTemps extends JFrame {
         });
     }
 }
-
-
