@@ -52,5 +52,4 @@ run_build: compile
 all: compile run_samples run_samplesDiff curve_samples curve_samplesDiff ant_build run_build
 
 clean:
-	rm -rf $(BIN)/*
 	$(ANT) -f $(ANT_FILE) clean
