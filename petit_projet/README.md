@@ -8,7 +8,7 @@ Ce projet compare l'algorithme de **Welzl** avec une **approche naïve** sur plu
 
 ## 📋 **Prérequis**
 
-- **Java** : Version **21 ou supérieure**  
+- **Java** : Version **22**  
 - **Ant** : Outil de construction Apache Ant (nécessaire pour certaines tâches)  
 - **Système** : Compatible **Linux**, **macOS**, ou **WSL** sous Windows  
 
@@ -97,7 +97,7 @@ make clean             # Nettoyer les fichiers générés
 
 ## 🛠️ **Dépannage**
 
-- **Erreur `Command not found`** : Assurez-vous que **Java 21+** et **Ant** sont installés et accessibles depuis le `PATH`.  
+- **Erreur `Command not found`** : Assurez-vous que **Java 22** et **Ant** sont installés et accessibles depuis le `PATH`.  
   Vérifiez l'installation :
   ```bash
   java -version
