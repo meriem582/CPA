@@ -78,11 +78,6 @@ make compile
 make all
 ```
 
-### 6️⃣ **Nettoyer le projet**
-```bash
-make clean
-```
-
 ---
 
 ## 📊 **Exemple de workflow complet**
@@ -90,7 +85,6 @@ make clean
 make run_samples       # Exécuter sur samples/
 make curve_samples     # Générer la courbe pour samples/
 make all               # Tout exécuter (compilation, tests, courbes, Ant)
-make clean             # Nettoyer les fichiers générés
 ```
 
 ---
