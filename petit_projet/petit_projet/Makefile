@@ -31,19 +31,19 @@ run_samplesDiff: compile
 	java -cp "$(BIN):$(JARS)" $(MAIN_EXP) $(SAMPLES_DIFF) $(RESULTS_DIFF)
 
 # Générer la courbe pour samples
-curve_samples:
+curve_samples: compile
 	java -cp "$(BIN):$(JARS)" $(MAIN_CURVE) $(RESULTS)
 
 # Générer la courbe pour samplesDiff
-curve_samplesDiff:
+curve_samplesDiff: compile
 	java -cp "$(BIN):$(JARS)" $(MAIN_CURVE) $(RESULTS_DIFF)
 	
 
 # Appeler le build.xml avec Ant
-ant_build:
+ant_build: compile
 	ant -f $(ANT_FILE)
 	
-run_build:
+run_build: compile
 	ant -f build.xml run
 
 
