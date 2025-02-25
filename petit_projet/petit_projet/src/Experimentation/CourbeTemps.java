@@ -10,15 +10,11 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import javax.swing.*;
 import java.io.*;
 
-public class CourbeTempsVaroumas extends JFrame { // 
+public class CourbeTemps extends JFrame {
 
+    private static final long serialVersionUID = -2163531690191013060L;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2163531690191013060L;
-
-	public CourbeTempsVaroumas(String titre) {
+    public CourbeTemps(String titre, String fichierResultat) {
         super(titre);
 
         // Créer le graphique
@@ -26,7 +22,7 @@ public class CourbeTempsVaroumas extends JFrame { //
                 "Comparaison des Temps d'Exécution",
                 "Fichiers .points",
                 "Temps (µs)",
-                creerDataset(),
+                creerDataset(fichierResultat),
                 PlotOrientation.VERTICAL,
                 true, true, false);
 
@@ -36,11 +32,10 @@ public class CourbeTempsVaroumas extends JFrame { //
         setContentPane(chartPanel);
     }
 
-    private CategoryDataset creerDataset() {
+    private CategoryDataset creerDataset(String outputFile) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
         // Lire les résultats depuis le fichier de sortie
-        String outputFile = "./Resultat/resultats_experimentation.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(outputFile))) {
             String ligne;
             boolean premiereLigne = true; // Ignorer l'en-tête
@@ -69,8 +64,15 @@ public class CourbeTempsVaroumas extends JFrame { //
     }
 
     public static void main(String[] args) {
+        if (args.length < 1) {
+            System.err.println("Usage : java Experimentation.CourbeTemps <fichier_resultat>");
+            System.exit(1);
+        }
+
+        String fichierResultat = args[0];
+
         SwingUtilities.invokeLater(() -> {
-        	CourbeTempsVaroumas exemple = new CourbeTempsVaroumas("Comparaison Algo Naïf vs Welzl");
+        	CourbeTemps exemple = new CourbeTemps("Comparaison Algo Naïf vs Welzl", fichierResultat);
             exemple.setSize(1500, 800);
             exemple.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             exemple.setVisible(true);
