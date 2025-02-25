@@ -10,7 +10,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import javax.swing.*;
 import java.io.*;
 
-public class CourbeTemps extends JFrame {
+public class CourbeTempsVaroumas extends JFrame { // 
 
 
 	/**
@@ -18,7 +18,7 @@ public class CourbeTemps extends JFrame {
 	 */
 	private static final long serialVersionUID = -2163531690191013060L;
 
-	public CourbeTemps(String titre) {
+	public CourbeTempsVaroumas(String titre) {
         super(titre);
 
         // Créer le graphique
@@ -40,7 +40,7 @@ public class CourbeTemps extends JFrame {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
         // Lire les résultats depuis le fichier de sortie
-        String outputFile = "./resultats_experimentation.txt";
+        String outputFile = "./Resultat/resultats_experimentation.txt";
         try (BufferedReader reader = new BufferedReader(new FileReader(outputFile))) {
             String ligne;
             boolean premiereLigne = true; // Ignorer l'en-tête
@@ -70,7 +70,7 @@ public class CourbeTemps extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            CourbeTemps exemple = new CourbeTemps("Comparaison Algo Naïf vs Welzl");
+        	CourbeTempsVaroumas exemple = new CourbeTempsVaroumas("Comparaison Algo Naïf vs Welzl");
             exemple.setSize(1500, 800);
             exemple.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             exemple.setVisible(true);

@@ -15,7 +15,7 @@ public class ExperimentationVaroumas {
 		String inputDirectory = "./samples";
 
 		// Fichier de sortie pour enregistrer les résultats
-		String outputFile = "./resultats_experimentation.txt";
+		String outputFile = "./Resultat/resultats_experimentation.txt";
 
 		// Liste pour stocker tous les résultats
 		List<String> results = new ArrayList<>();
