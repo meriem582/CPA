@@ -88,7 +88,6 @@ make clean
 
 ## 📊 **Exemple de workflow complet**
 ```bash
-make compile           # Compiler le projet
 make run_samples       # Exécuter sur samples/
 make curve_samples     # Générer la courbe pour samples/
 make all               # Tout exécuter (compilation, tests, courbes, Ant)
