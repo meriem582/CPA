@@ -61,8 +61,8 @@ public class DefaultTeam {
 	// renvoie un cercle couvrant tout point de la liste, de rayon minimum.
 	// decommanter la méthode que vous voulez utilisé
 	public Circle calculCercleMin(ArrayList<Point> inputPoints) {
-//		return calculCercleMinAlgoNaif(inputPoints);
-		return CalculCercleMinAlgoWelzl(inputPoints);
+		return calculCercleMinAlgoNaif(inputPoints);
+//		return CalculCercleMinAlgoWelzl(inputPoints);
 	}
 
 	// calculCercleMinAlgoNaif : ArrayList<Point> --> Circle
