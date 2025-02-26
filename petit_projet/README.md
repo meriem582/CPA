@@ -1,5 +1,3 @@
-Voici le contenu prêt à être copié directement dans ton `README.md` sur GitHub :  
-
 # 📘 **Petit Projet CPA**  
 
 Ce projet compare l'algorithme de **Welzl** avec une **approche naïve** sur plusieurs ensembles de données et génère des courbes d'analyse des performances.
