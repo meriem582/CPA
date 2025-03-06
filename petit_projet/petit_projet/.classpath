@@ -8,6 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/merie/Desktop/petit_projet/petit_projet/jars/jfreechart-1.5.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/merie/Desktop/petit_projet/petit_projet/jars/swing-framework.jar"/>
-	<classpathentry kind="lib" path="C:/Users/merie/Desktop/WorkSpacesS2/WorkSpaceCPA/CPA/petit_projet/petit_projet/jars/supportGUI.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/merie/Desktop/WorkSpacesS2/WorkSpaceCPA/CPA/petit_projet/petit_projet/jars/supportGUI.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
