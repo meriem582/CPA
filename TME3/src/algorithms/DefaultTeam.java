@@ -21,7 +21,8 @@ public class DefaultTeam {
         Point p=points.get(0);
         Point q=points.get(1);
 
-        for (Point s: points) for (Point t: points) if (s.distance(t)>p.distance(q)) {p=s;q=t;}
+        for (Point s: points) for (Point t: points) 
+            if (s.distance(t)>p.distance(q)) {p=s;q=t;}
 
         return new Line(p,q);
     }
@@ -41,7 +42,8 @@ public class DefaultTeam {
         Point p=antipodales.get(0).getP();
         Point q=antipodales.get(0).getQ();
 
-        for (Line a: antipodales) if (a.getP().distance(a.getQ())>p.distance(q)) {p=a.getP();q=a.getQ();}
+        for (Line a: antipodales) if (a.getP().distance(a.getQ())>p.distance(q)) 
+        {p=a.getP();q=a.getQ();}
 
         return new Line(p,q);
     }
@@ -50,11 +52,13 @@ public class DefaultTeam {
         int n = p.size();
         ArrayList<Line> antipodales = new ArrayList<Line>();
         int k = 1;
-        while (distance(p.get(k),p.get(n-1),p.get(0)) < distance(p.get((k+1)%n),p.get(n-1),p.get(0))) k++;
+        while (distance(p.get(k),p.get(n-1),p.get(0)) 
+               < distance(p.get((k+1)%n),p.get(n-1),p.get(0))) k++;
         int i = 0;
         int j = k;
         while (i<=k && j<n) {
-            while (distance(p.get(j),p.get(i),p.get(i+1))<distance(p.get((j+1)%n),p.get(i),p.get(i+1)) && j<n-1) {
+            while (distance(p.get(j),p.get(i),p.get(i+1))<
+                   distance(p.get((j+1)%n),p.get(i),p.get(i+1)) && j<n-1) {
                 antipodales.add(new Line(p.get(i),p.get(j)));
                 j++;
             }
@@ -107,7 +111,9 @@ public class DefaultTeam {
                 if (ref.equals(p)) {enveloppe.add(p); enveloppe.add(q); continue;}
                 double signeRef = crossProduct(p,q,p,ref);
                 boolean estCote = true;
-                for (Point r: points) if (signeRef * crossProduct(p,q,p,r)<0) {estCote = false;break;} //ici sans le break le temps de calcul devient horrible
+                for (Point r: points) 
+                    if (signeRef * crossProduct(p,q,p,r)<0) {estCote = false;break;} 
+                //ici sans le break le temps de calcul devient horrible
                 if (estCote) {enveloppe.add(p); enveloppe.add(q);}
             }
         }
@@ -128,8 +134,11 @@ public class DefaultTeam {
             if (minY[p.x]==null||p.y<minY[p.x].y) minY[p.x]=p;
         }
         ArrayList<Point> result = new ArrayList<Point>();
-        for (int i=0;i<maxX+1;i++) if (minY[i]!=null) result.add(minY[i]);
-        for (int i=maxX;i>=0;i--) if (maxY[i]!=null && !result.get(result.size()-1).equals(maxY[i])) result.add(maxY[i]);
+        for (int i=0;i<maxX+1;i++) 
+            if (minY[i]!=null) result.add(minY[i]);
+        for (int i=maxX;i>=0;i--) 
+            if (maxY[i]!=null && 
+                !result.get(result.size()-1).equals(maxY[i])) result.add(maxY[i]);
 
         if (result.get(result.size()-1).equals(result.get(0))) result.remove(result.size()-1);
 
@@ -159,8 +168,10 @@ public class DefaultTeam {
         return result;
     }
     private boolean triangleContientPoint(Point a, Point b, Point c, Point x) {
-        double l1 = ((b.y-c.y)*(x.x-c.x)+(c.x-b.x)*(x.y-c.y))/(double)((b.y-c.y)*(a.x-c.x)+(c.x-b.x)*(a.y-c.y));
-        double l2 = ((c.y-a.y)*(x.x-c.x)+(a.x-c.x)*(x.y-c.y))/(double)((b.y-c.y)*(a.x-c.x)+(c.x-b.x)*(a.y-c.y));
+        double l1 = ((b.y-c.y)*(x.x-c.x)+(c.x-b.x)*(x.y-c.y))
+            /(double)((b.y-c.y)*(a.x-c.x)+(c.x-b.x)*(a.y-c.y));
+        double l2 = ((c.y-a.y)*(x.x-c.x)+(a.x-c.x)*(x.y-c.y))
+            /(double)((b.y-c.y)*(a.x-c.x)+(c.x-b.x)*(a.y-c.y));
         double l3 = 1-l1-l2;
         return (0<l1 && l1<1 && 0<l2 && l2<1 && 0<l3 && l3<1);
     }
@@ -178,7 +189,8 @@ public class DefaultTeam {
             if (ref.equals(q)) { enveloppe.add(q); continue;}
             double signeRef = crossProduct(ouest,q,ouest,ref);
             boolean estCote = true;
-            for (Point r: points) if (signeRef * crossProduct(ouest,q,ouest,r)<0) {estCote = false;break;}
+            for (Point r: points) if (signeRef * crossProduct(ouest,q,ouest,r)<0)
+            {estCote = false;break;}
             if (estCote) {enveloppe.add(q);break;}
         }
 
