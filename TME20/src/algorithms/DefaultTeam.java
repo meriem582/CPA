@@ -71,7 +71,8 @@ public class DefaultTeam {
 		return (p.x - q.x) * (r.y - q.y) - (p.y - q.y) * (r.x - q.x);
 	}
 
-	public ArrayList<Point> filtrageAklToussaint(ArrayList<Point> tab, ArrayList<Point> points) {
+	public ArrayList<Point> filtrageAklToussaint(ArrayList<Point> tab, 
+						     ArrayList<Point> points) {
 
 		ArrayList<Point> filtre = new ArrayList<Point>();
 		for (int i = 0; i < 4; i++) {
@@ -100,7 +101,8 @@ public class DefaultTeam {
 
 	}
 
-	public ArrayList<Point> triPixel(HashMap<Integer, Point> ymin, HashMap<Integer, Point> ymax,
+	public ArrayList<Point> triPixel(HashMap<Integer, Point> ymin,
+					 HashMap<Integer, Point> ymax,
 			ArrayList<Point> points) {
 		ArrayList<Point> tri = new ArrayList<Point>();
 
@@ -166,7 +168,8 @@ public class DefaultTeam {
 		if (points.size() < 3) {
 			return null;
 		}
-		return triPixel(new HashMap<Integer, Point>(), new HashMap<Integer, Point>(), points);
+		return triPixel(new HashMap<Integer, Point>(), 
+				new HashMap<Integer, Point>(), points);
 
 	}
 
@@ -238,7 +241,7 @@ public class DefaultTeam {
 		ArrayList<Point> rest = (ArrayList<Point>) points.clone();
 		for (int i = 0; i < rest.size(); i++) {
 			if (triangleContientPoint(ouest, sud, est, rest.get(i))
-					|| triangleContientPoint(ouest, est, nord, rest.get(i))) {
+			|| triangleContientPoint(ouest, est, nord, rest.get(i))) {
 				rest.remove(i);
 				i--;
 			}
@@ -262,7 +265,8 @@ public class DefaultTeam {
 			}
 			if (maxValue != 0) {
 				for (int j = 0; j < rest.size(); j++) {
-					if (triangleContientPoint(a, b, maxPoint, rest.get(j))) {
+					if (triangleContientPoint
+					    (a, b, maxPoint, rest.get(j))) {
 						rest.remove(j);
 						j--;
 					}
@@ -276,9 +280,9 @@ public class DefaultTeam {
 
 	private boolean triangleContientPoint(Point a, Point b, Point c, Point x) {
 		double l1 = ((b.y - c.y) * (x.x - c.x) + (c.x - b.x) * (x.y - c.y))
-				/ (double) ((b.y - c.y) * (a.x - c.x) + (c.x - b.x) * (a.y - c.y));
+		/ (double) ((b.y - c.y) * (a.x - c.x) + (c.x - b.x) * (a.y - c.y));
 		double l2 = ((c.y - a.y) * (x.x - c.x) + (a.x - c.x) * (x.y - c.y))
-				/ (double) ((b.y - c.y) * (a.x - c.x) + (c.x - b.x) * (a.y - c.y));
+		/ (double) ((b.y - c.y) * (a.x - c.x) + (c.x - b.x) * (a.y - c.y));
 		double l3 = 1 - l1 - l2;
 		return (0 < l1 && l1 < 1 && 0 < l2 && l2 < 1 && 0 < l3 && l3 < 1);
 	}
@@ -343,7 +347,8 @@ public class DefaultTeam {
 	private double angle(Point p, Point q, Point s, Point t) {
 		if (p.equals(q) || s.equals(t))
 			return Double.MAX_VALUE;
-		double cosTheta = dotProduct(p, q, s, t) / (double) (p.distance(q) * s.distance(t));
+		double cosTheta = dotProduct(p, q, s, t) / 
+			(double) (p.distance(q) * s.distance(t));
 		return Math.acos(cosTheta);
 	}
 
@@ -377,10 +382,14 @@ public class DefaultTeam {
             if (minY[p.x]==null||p.y<minY[p.x].y) minY[p.x]=p;
         }
         ArrayList<Point> result = new ArrayList<Point>();
-        for (int i=0;i<maxX+1;i++) if (minY[i]!=null) result.add(minY[i]);
-        for (int i=maxX;i>=0;i--) if (maxY[i]!=null && !result.get(result.size()-1).equals(maxY[i])) result.add(maxY[i]);
+        for (int i=0;i<maxX+1;i++) 
+		if (minY[i]!=null) result.add(minY[i]);
+        for (int i=maxX;i>=0;i--) 
+		if (maxY[i]!=null && !result.get(result.size()-1).equals(maxY[i])) 
+			result.add(maxY[i]);
 
-        if (result.get(result.size()-1).equals(result.get(0))) result.remove(result.size()-1);
+        if (result.get(result.size()-1).equals(result.get(0))) 
+		result.remove(result.size()-1);
 
         return result;
     }
