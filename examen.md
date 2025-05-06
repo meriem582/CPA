@@ -1,7 +1,9 @@
 *** exercice 02 : ***
 
 *** question 01 :  ***
-On utilise l’algorithme l’élimination par pixel et ensuite dans le tableau des ymin et ymax et pour chaque 3 point de tableau on utilise le produit vectoriel pour savoir s’il y’a de mauvais côté. Par exemple dans le tableau on a 3 point p,q,r si ProdCross(p,q,r)<0 donc on supprime le point Q.
+On utilise l’algorithme l’élimination par pixel et ensuite dans le tableau des ymin et ymax 
+et pour chaque 3 point de tableau on utilise le produit vectoriel pour savoir s’il y’a de mauvais côté.
+Par exemple dans le tableau on a 3 point p,q,r si ProdCross(p,q,r)<0 donc on supprime le point Q.
 
 private ArrayList<Point> Graham  (ArrayList<Point> points) {
 	  Point [] Miny = new Point[RechercheMax(points)+1];
