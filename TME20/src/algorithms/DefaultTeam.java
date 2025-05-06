@@ -162,7 +162,7 @@ public class DefaultTeam {
 	// enveloppeConvexe: ArrayList<Point> --> ArrayList<Point>
 	// renvoie l'enveloppe convexe de la liste.
 	public ArrayList<Point> enveloppeConvexe(ArrayList<Point> points) {
-//        return exercice1(points);
+//        return AlgoNaifEnvelopeconvexe(points);
 		if (points.size() < 3) {
 			return null;
 		}
@@ -170,7 +170,7 @@ public class DefaultTeam {
 
 	}
 
-	private ArrayList<Point> exercice1(ArrayList<Point> points) {
+	private ArrayList<Point> AlgoNaifEnvelopeconvexe(ArrayList<Point> points) {
 		if (points.size() < 4)
 			return points;
 
@@ -211,7 +211,7 @@ public class DefaultTeam {
 		return ((q.x - p.x) * (t.y - s.y) - (q.y - p.y) * (t.x - s.x));
 	}
 
-	private ArrayList<Point> exercice6(ArrayList<Point> points) {
+	private ArrayList<Point> AlgoQuickHull(ArrayList<Point> points) {
 		if (points.size() < 4)
 			return points;
 
@@ -283,7 +283,7 @@ public class DefaultTeam {
 		return (0 < l1 && l1 < 1 && 0 < l2 && l2 < 1 && 0 < l3 && l3 < 1);
 	}
 
-	private ArrayList<Point> exercice4(ArrayList<Point> points) {
+	private ArrayList<Point> AlgoJarvis(ArrayList<Point> points) {
 		if (points.size() < 4)
 			return points;
 
@@ -350,10 +350,10 @@ public class DefaultTeam {
 	private double dotProduct(Point p, Point q, Point s, Point t) {
 		return ((q.x - p.x) * (t.x - s.x) + (q.y - p.y) * (t.y - s.y));
 	}
-	private ArrayList<Point> exercice5(ArrayList<Point> points){
+	private ArrayList<Point> AlgoGraham(ArrayList<Point> points){
         if (points.size()<4) return points;
 
-        ArrayList<Point> result = exercice2(points);
+        ArrayList<Point> result = TriParPixel(points);
         for (int i=1;i<result.size()+2;i++) {
             Point p = result.get((i-1)%result.size());
             Point q = result.get(i%result.size());
@@ -366,7 +366,7 @@ public class DefaultTeam {
         }
         return result;
     }
-	private ArrayList<Point> exercice2(ArrayList<Point> points){
+	private ArrayList<Point> TriParPixel(ArrayList<Point> points){
         if (points.size()<4) return points;
         int maxX=points.get(0).x;
         for (Point p: points) if (p.x>maxX) maxX=p.x;

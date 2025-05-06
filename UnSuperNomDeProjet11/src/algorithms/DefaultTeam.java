@@ -67,9 +67,9 @@ public class DefaultTeam {
 		return new Point(x, y);
 	}
 
-	// calculCercleMin: ArrayList<Point> --> Circle
+	// CercleMinAlgoNaif: ArrayList<Point> --> Circle
 	// renvoie un cercle couvrant tout point de la liste, de rayon minimum.
-	public Circle calculCercleMin(ArrayList<Point> points) {
+	public Circle CercleMinAlgoNaif(ArrayList<Point> points) {
 		if (points.isEmpty()) {
 			return null;
 		}
@@ -155,7 +155,7 @@ public class DefaultTeam {
 		return new Circle(center, radius);
 	}
 
-	private Circle tme1exercice5(ArrayList<Point> points) {
+	private Circle AlgoRitter(ArrayList<Point> points) {
 		if (points.size() < 1)
 			return null;
 		ArrayList<Point> rest = (ArrayList<Point>) points.clone();
