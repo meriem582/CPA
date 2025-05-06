@@ -16,7 +16,8 @@ public class FloydWarshall {
         return next;
     }
 
-    private static void initializeMatrices(ArrayList<Point> points, int edgeThreshold, int n, int[][] next, double[][] dist) {
+    private static void initializeMatrices
+    (ArrayList<Point> points, int edgeThreshold, int n, int[][] next, double[][] dist) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (i == j) {
