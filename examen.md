@@ -1,5 +1,3 @@
-*** exercice 01 : ***
-
 *** exercice 02 : ***
 
 *** question 01 :  ***
