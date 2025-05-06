@@ -138,7 +138,8 @@ public class DefaultTeam {
 					for (Point s : points) {
 						double dx1 = s.x - center.x;
 						double dy1 = s.y - center.y;
-						if (dx1 * dx1 + dy1 * dy1 > cRadiusSquared) {
+						if 
+						(dx1 * dx1 + dy1 * dy1 > cRadiusSquared) {
 							allHit = false;
 							break;
 						}
@@ -175,12 +176,14 @@ public class DefaultTeam {
 		rest.remove(q);
 		while (!rest.isEmpty()) {
 			Point s = rest.remove(0);
-			double distanceFromCToS = Math.sqrt((s.x - cX) * (s.x - cX) + (s.y - cY) * (s.y - cY));
+			double distanceFromCToS = Math.sqrt((s.x - cX) * (s.x - cX) + 
+							    (s.y - cY) * (s.y - cY));
 			if (distanceFromCToS <= cRadius)
 				continue;
 			double cPrimeRadius = .5 * (cRadius + distanceFromCToS);
 			double alpha = cPrimeRadius / (double) (distanceFromCToS);
-			double beta = (distanceFromCToS - cPrimeRadius) / (double) (distanceFromCToS);
+			double beta = (distanceFromCToS - cPrimeRadius) / 
+				(double) (distanceFromCToS);
 			double cPrimeX = alpha * cX + beta * s.x;
 			double cPrimeY = alpha * cY + beta * s.y;
 			cRadius = cPrimeRadius;
