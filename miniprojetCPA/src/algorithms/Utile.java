@@ -19,7 +19,8 @@ public class Utile {
      * - L’approche basée sur les chemins courts permet d’éviter des liaisons inutiles 
      *   et de mieux répartir les connexions.
      */
-    public static ArrayList<Edge> steinerBase(ArrayList<Point> points, int edgeThreshold, ArrayList<Point> hitPoints) {
+    public static ArrayList<Edge> steinerBase(ArrayList<Point> points, 
+                                              int edgeThreshold, ArrayList<Point> hitPoints) {
         Kruskal kruskal = new Kruskal();
         ArrayList<Edge> edges = kruskal.kruskal(hitPoints);
 
@@ -85,7 +86,8 @@ public class Utile {
             connectedPoints.add(startPoint);
 
             ArrayList<Point> sortedHitPoints = new ArrayList<>(hitPoints);
-            sortedHitPoints.sort(Comparator.comparingDouble(p -> p.distance(startPoint)));
+            sortedHitPoints.sort
+                (Comparator.comparingDouble(p -> p.distance(startPoint)));
 
             //file de priorité pour sélectionner les connexions les plus courtes en premier
             PriorityQueue<Edge> edgeQueue = new PriorityQueue<>(Comparator.comparingDouble(Edge::distance));
@@ -97,12 +99,15 @@ public class Utile {
                 Point newPoint = null;
 
                 for (Edge edge : edgeQueue) {
-                    if ((connectedPoints.contains(edge.p) || connectedPoints.contains(edge.q))
+                    if ((connectedPoints.contains(edge.p) 
+                         || connectedPoints.contains(edge.q))
                             && edge.distance() < minDistance) {
 
-                        Point candidatePoint = connectedPoints.contains(edge.p) ? edge.q : edge.p;
+                        Point candidatePoint = 
+                            connectedPoints.contains(edge.p) ? edge.q : edge.p;
 
-                        if (!connectedPoints.contains(candidatePoint) && (totalDistance + edge.distance()) <= budgetLimit) {
+                        if (!connectedPoints.contains(candidatePoint) &&
+                            (totalDistance + edge.distance()) <= budgetLimit) {
                             bestEdge = edge;
                             minDistance = edge.distance();
                             newPoint = candidatePoint;
@@ -123,7 +128,8 @@ public class Utile {
 
       
             if (connectedPoints.size() > maxConnectedPoints
-                    || (connectedPoints.size() == maxConnectedPoints && totalDistance < bestDistance)) {
+                    || (connectedPoints.size() ==
+                        maxConnectedPoints && totalDistance < bestDistance)) {
                 bestEdges = new ArrayList<>(currentEdges);
                 bestDistance = totalDistance;
                 maxConnectedPoints = connectedPoints.size();
